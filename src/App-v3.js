@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
-require("dotenv").config();
-const KEY=process.env.KEY;
+
+// const KEY = process.env.API_KEY;
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
@@ -55,7 +55,7 @@ export default function App() {
           setError("");
 
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+            `http://www.omdbapi.com/?apikey=e81a8d74&s=${query}`,
             { signal: controller.signal }
           );
 
@@ -367,7 +367,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+          `http://www.omdbapi.com/?apikey=e81a8d74&i=${selectedId}`
         );
         const data = await res.json();
         setMovie(data);
